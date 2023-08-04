@@ -5,6 +5,11 @@
             'url' => route('dashboard'),
             'current' => request()->routeIs('dashboard'),
         ],
+        [
+            'name' => 'Tareas',
+            'url' => route('tasks.index'),
+            'current' => request()->routeIs('tasks.*'),
+        ],
     ];
 @endphp
 
