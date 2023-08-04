@@ -13,7 +13,7 @@
 
                     <div class="mb-4">
                         <input-label>Nombre</input-label>
-                        <x-text-input class="w-full" name="id" type='text' placeholder='Ingrese Nombre' />
+                        <x-text-input class="w-full" name="id" value="{{ old('id') }}" type='text' placeholder='Ingrese Nombre' />
                         <x-input-error :messages="$errors->first('id')" />
                     </div>
                     <div class="flex justify-end">
