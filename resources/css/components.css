@@ -5,3 +5,15 @@
 .btn-blue {
     @apply bg-blue-500 text-white hover:bg-blue-700;
 }
+
+.btn-green {
+    @apply bg-green-500 text-white hover:bg-green-700;
+}
+
+.card {
+    @apply bg-white shadow-lg rounded-lg;
+}
+
+.card-body {
+    @apply px-6 py-8;
+}
