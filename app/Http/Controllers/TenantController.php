@@ -57,6 +57,7 @@ class TenantController extends Controller
 
     public function destroy(Tenant $tenant)
     {
-        //
+        $tenant->delete();
+        return redirect()->route('tenants.index');
     }
 }

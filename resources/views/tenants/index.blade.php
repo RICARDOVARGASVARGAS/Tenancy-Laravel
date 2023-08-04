@@ -40,6 +40,12 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-end">
+                                    <form action="{{ route('tenants.destroy', $tenant) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-red mr-2">Eliminar</button>
+                                    </form>
+
                                     <a href="{{ route('tenants.edit', $tenant) }}" class="btn btn-green">
                                         Editar
                                     </a>
