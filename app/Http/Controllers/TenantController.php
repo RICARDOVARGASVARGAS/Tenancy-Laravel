@@ -21,6 +21,18 @@ class TenantController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id' => 'required',
+        ]);
+
+        $tenant = Tenant::create($request->all());
+
+        $tenant->domains()->create([
+            // 'domain' => $request->get('id') . '.' . config('app.domain'),
+            'domain' => $request->get('id') . '.' . 'tenancy.test',
+        ]);
+
+        return redirect()->route('tenants.index');
     }
 
     public function show(Tenant $tenant)
