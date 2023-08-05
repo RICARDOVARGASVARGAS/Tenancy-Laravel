@@ -35,18 +35,33 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    function show()
+    function show(Task $task)
     {
-        return view('tenancy.tasks.show');
+        return view('tenancy.tasks.show', compact('task'));
     }
 
-    function edit()
+    function edit(Task $task)
     {
-        return view('tenancy.tasks.edit');
+        return view('tenancy.tasks.edit', compact('task'));
     }
 
-    function update()
+    function update(Request $request, Task $task)
     {
+        $data = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image_url' => 'nullable|image',
+        ]);
+
+        // Verificar si se envió una imagen
+        if ($request->hasFile('image_url')) {
+            Storage::delete($task->image_url);
+            $data['image_url'] = Storage::put('tasks', $request->file('image_url'));
+        }
+
+        $task->update($data);
+
+        return redirect()->route('tasks.index');
     }
 
     function destroy()
