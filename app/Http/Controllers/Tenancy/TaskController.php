@@ -11,7 +11,8 @@ class TaskController extends Controller
 {
     function index()
     {
-        return view('tenancy.tasks.index');
+        $tasks = Task::paginate();
+        return view('tenancy.tasks.index', compact('tasks'));
     }
 
     function create()
