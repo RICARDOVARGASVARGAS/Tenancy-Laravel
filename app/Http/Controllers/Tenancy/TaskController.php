@@ -64,7 +64,10 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    function destroy()
+    function destroy(Task $task)
     {
+        Storage::delete($task->image_url);
+        $task->delete();
+        return redirect()->route('tasks.index');
     }
 }
